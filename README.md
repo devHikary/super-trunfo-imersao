@@ -16,3 +16,4 @@ Durante a aula 7 foi desenvolvido a lógica do jogo do zero, desde a criação d
 - Rodar com a extensão: Live Server
 
 ## Página do projeto
+https://devhikary.github.io/super-trunfo-imersao/
