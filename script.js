@@ -3,7 +3,7 @@ var carta1 = {
   atributos: {
     ataque: 9,
     defesa: 6,
-    magia: 2
+    magia: 4
   }
 }
 var carta2 = {
@@ -19,18 +19,18 @@ var carta3 = {
   atributos: {
     ataque: 6,
     defesa: 8,
-    magia: 1
+    magia: 4
   }
 }
 
 var cartas = [carta1, carta2, carta3]
 var cartaMaquina;
 var cartaJogador;
+var elementoResultado = document.getElementById("resultado")
 
 function sortearCarta() {
   var numeroCartaMaquina = parseInt(Math.random() * 3);
   cartaMaquina = cartas[numeroCartaMaquina];
-  console.log(cartaMaquina)
 
   var numeroCartaJogador = parseInt(Math.random() * 3);
   while (numeroCartaMaquina == numeroCartaJogador) {
@@ -65,7 +65,6 @@ function obtemAtributosSelecionado(){
 
 function jogar(){
   var atributoSelecionado = obtemAtributosSelecionado();
-  var elementoResultado = document.getElementById("resultado")
   if(atributoSelecionado === undefined){
     elementoResultado.innerHTML = "Selecione um atributo"
     return;
@@ -74,10 +73,27 @@ function jogar(){
   var valorCartaMaquina = cartaMaquina.atributos[atributoSelecionado]
   
   if(valorCartaJogador > valorCartaMaquina){
-    elementoResultado.innerHTML = "Você venceu de " + valorCartaJogador + " a " + valorCartaMaquina;
+    elementoResultado.innerHTML = "Você venceu contra "+  cartaMaquina.nome + " de " + valorCartaJogador + " a " + valorCartaMaquina;
   } else if(valorCartaJogador < valorCartaMaquina){
-    elementoResultado.innerHTML = "Você perdeu de " + valorCartaMaquina + " a " + valorCartaJogador;
+    elementoResultado.innerHTML = "Você perdeu contra "+ cartaMaquina.nome + " de " + valorCartaMaquina + " a " + valorCartaJogador;
   }else{
-    elementoResultado.innerHTML = "Empatou"
+    elementoResultado.innerHTML = "Empatou contra "+  cartaMaquina.nome
+  }
+
+  document.getElementById("btnNovamente").classList.add("show");
+}
+
+function novamente(){
+  document.getElementById("btnSortear").disabled = false;
+  document.getElementById("btnJogar").disabled = true;
+  elementoResultado.innerHTML = ""
+  document.getElementById("btnNovamente").classList.remove("show");
+  limparSelecao()
+}
+
+function limparSelecao(){
+  var radioAtributos = document.getElementsByName("atributo");
+  for (let i = 0; i < radioAtributos.length; i++) {
+    radioAtributos[i].checked = false;
   }
 }

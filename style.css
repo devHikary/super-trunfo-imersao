@@ -75,3 +75,11 @@ h2 {
   font-size: 30px;
   font-weight: 700;
 }
+
+.hidden{
+  display: none;
+}
+
+.show{
+  display: inline;
+}
