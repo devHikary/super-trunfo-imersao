@@ -69,3 +69,9 @@ h2 {
 .opcoes {
   color: white;
 }
+
+#resultado{
+  color: #ffffff;
+  font-size: 30px;
+  font-weight: 700;
+}
